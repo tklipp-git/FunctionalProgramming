@@ -1,14 +1,13 @@
 --bgcolor black
 --fgcolor green
 
---title Functional Programming with Haskell ( and Elm ) Part 1
+--title Functional Programming with Haskell and Elm ( without Haskell and Elm ) 
+--center Part 1
+
+
 
 --author Tobias Klipp
-
 --date today
-
---newpage
---heading Why ?
 
 --##
 --##
@@ -61,10 +60,12 @@ def func(x):
 
 --endoutput
 
-  * fully defined => all operations are assembled of parameters
 ---
+  * fully defined => all operations are assembled of parameters
 
+---
   * multiple executions wont change the result
+
 ---
 
   * deterministic => "equal inputs result in equal outputs"
@@ -104,32 +105,35 @@ True or false ?
 
 --newpage
 --heading examples - 2 - observations
-
-
 --beginoutput
-
 y = 2
 
 def func2(x):
     global y 
     y = y + 2
     return x*y
-
 --endoutput
 
 ---
 What has changed ?
 
+---
   * use of assignment ( "state"-ment )
 
-  * order of execution is mandatory for the result
+---
+  * order of execution is decisive for the result
 
+---
   * operations aren´t composed of paramaters anymore
 
+---
   => the programm is now an captive of some kind of state
 
-  => Side - Effects
+---
+  => side - Effects
 
+---
+  => concept of time is introduced
 
 --##
 --##
@@ -144,7 +148,7 @@ y = 2
 
 def func3():
     global y 
-    y= y * 2
+    y = y * 2
     return y
 
 ---
@@ -168,17 +172,20 @@ y = 2
 
 def func3():
     global y 
-    y= y * 2
+    y = y * 2
     return y
 
 --endoutput
 
 ---
-  * Where the hell are the parameters? 
----
-    => not defined at all
 
-  * result is fully dependant of the "programs state"
+  * Where are the parameters? 
+---
+
+    => not defined at all
+---
+
+  * result is fully dependant of the "external state"
 
 --##
 --##
@@ -232,14 +239,17 @@ Where are my variables now?
 --newpage
 --heading What happened ? -> Philosophy Time
 
+---
   * example 1 was a pure function
     => deterministic
     => well defined
     => no side effects
 
+---
   * pure functions are mathematical objects
     => hence part of the platonic realm of concepts
 
+---
   * side-effects destroy the well defined context of mathematics
     => absolute reliability is gone
 
@@ -317,33 +327,42 @@ def func6(x):
 
 --##
 --##
+
 --newpage
 --heading Whats the matter with "Functional Programming" ?
---horline
 
+---
+  * based on lambda calculus and category theory
+
+---
+  * try to be as pure as possible
+    => but offer ways of handling side effects
+
+---
+  * all functions are well defined
+
+---
+  * try to avoid mutable states
 
 ---
   * expressions vs. statements
+    => no assignments
+    => "variables" are "on demand" defined constants
 
 ---
-  * avoiding of mutable states
-
----
-
   * functions are first-class-citizens
     -> return values
     -> parameters
     -> variables
----
 
-  * higher order functions
+---
+  * recursion instead of loops
 
 --##
 --##
 
 --newpage
---heading Features
---horline
+--heading Features of functional Programming ( influenced by Haskell ) 
 --newpage
 --heading Features - Higher-Order Functions
 --##
@@ -365,15 +384,8 @@ def func6(x):
 --##
 --##
 --newpage
---heading 
+--heading  
 --##
 --##
 --newpage
---heading 
---##
---##
---newpage
---heading Closures
---beginoutput
-  foo y = (\x -> x + y )
---endoutput
+--heading The End
