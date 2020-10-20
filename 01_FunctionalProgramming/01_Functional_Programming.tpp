@@ -51,6 +51,34 @@ True or false ?
 --##
 
 --newpage
+--heading examples - 1 - observations
+
+
+--beginoutput
+
+def func(x):
+    return x+2
+
+--endoutput
+
+  * fully defined => all operations are assembled of parameters
+---
+
+  * multiple executions wont change the result
+---
+
+  * deterministic => "equal inputs result in equal outputs"
+---
+
+  * can be replaced with its result
+
+---
+  => Referential Transparency
+
+--##
+--##
+
+--newpage
 --heading examples - 2
 
 
@@ -74,6 +102,37 @@ True or false ?
 --##
 --##
 
+--newpage
+--heading examples - 2 - observations
+
+
+--beginoutput
+
+y = 2
+
+def func2(x):
+    global y 
+    y = y + 2
+    return x*y
+
+--endoutput
+
+---
+What has changed ?
+
+  * use of assignment ( "state"-ment )
+
+  * order of execution is mandatory for the result
+
+  * operations aren´t composed of paramaters anymore
+
+  => the programm is now an captive of some kind of state
+
+  => Side - Effects
+
+
+--##
+--##
 --newpage
 --heading examples - 3
 
@@ -100,6 +159,30 @@ True or false ?
 --##
 
 --newpage
+--heading examples - 3 - observations
+
+
+--beginoutput
+
+y = 2
+
+def func3():
+    global y 
+    y= y * 2
+    return y
+
+--endoutput
+
+---
+  * Where the hell are the parameters? 
+---
+    => not defined at all
+
+  * result is fully dependant of the "programs state"
+
+--##
+--##
+--newpage
 --heading examples - 4
 
 
@@ -119,6 +202,46 @@ True or false ?
 
 --##
 --##
+
+--newpage
+--heading examples - 4 - observations
+
+
+--beginoutput
+
+
+def func4():
+    return datetime.now()
+
+--endoutput
+
+---
+Where are my variables now?
+
+  * program is dependant of something it isnt built of
+---
+
+  * no thoughts about determinism anymore
+---
+
+  => formal object becomes victim of real world issues
+
+--##
+--##
+
+--newpage
+--heading What happened ? -> Philosophy Time
+
+  * example 1 was a pure function
+    => deterministic
+    => well defined
+    => no side effects
+
+  * pure functions are mathematical objects
+    => hence part of the platonic realm of concepts
+
+  * side-effects destroy the well defined context of mathematics
+    => absolute reliability is gone
 
 --newpage
 --heading examples - 4
@@ -147,8 +270,55 @@ True or false ?
 ---
 => Whats the difference ?
 
+--##
+--##
+
 --newpage
---heading Functional Programming ?
+
+--heading examples - 4 - observations
+
+--beginoutput
+
+def func5(x):
+    sum=0
+    for z in range(1,x+1):
+       sum=sum+z
+    return sum
+
+def func6(x):
+    if x <= 1:
+        return x
+    return x + func6(x-1)
+
+--endoutput
+
+  * the result of both functions are the same
+---
+
+  *  iteration vs. recursion
+---
+
+  => func6 is pure
+
+--##
+--##
+
+--newpage
+--heading What we have learned so far
+
+  * Concept of pure functions
+---
+
+  * programs can be dependant of external state
+---
+
+  * side effects "make" programs "unpredictable"
+    => operations which may not have been intended
+
+--##
+--##
+--newpage
+--heading Whats the matter with "Functional Programming" ?
 --horline
 
 
@@ -159,12 +329,14 @@ True or false ?
   * avoiding of mutable states
 
 ---
-  * first-class-citizens
+
+  * functions are first-class-citizens
     -> return values
     -> parameters
     -> variables
 ---
-    => higher order functions
+
+  * higher order functions
 
 --##
 --##
