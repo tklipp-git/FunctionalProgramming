@@ -19,6 +19,18 @@ def func3():
 def func4():
     return datetime.now()
 
+def func5(x):
+    sum=0
+    for z in range(1,x+1):
+       sum=sum+z
+    return sum
+      
+
+def func6(x):
+    if x <= 1:
+        return x
+    return x + func6(x-1)
+
 class Test(unittest.TestCase):
     def test_func(self):
 
@@ -29,6 +41,12 @@ class Test(unittest.TestCase):
         #self.assertEqual(func3(),func3())
 
         #self.assertEqual(func4(),func4())
+        
+        #self.assertEqual(func5(10),func5(10))
+
+        #self.assertEqual(func6(10),func6(10))
+
+        #self.assertEqual(func5(10),func6(10))
 
 if __name__ == '__main__':
     unittest.main()
